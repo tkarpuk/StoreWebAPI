@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using StoreWebAPI.Extentions.Services;
+using StoreWebAPI.Extentions.App;
 
 namespace StoreWebAPI
 {
@@ -17,6 +19,7 @@ namespace StoreWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerExt();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -26,6 +29,7 @@ namespace StoreWebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwaggerExt();
 
             app.UseRouting();
 
