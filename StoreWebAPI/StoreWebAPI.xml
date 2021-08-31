@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StoreWebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:StoreWebAPI.Controllers.TestController.GetCurrentTime">
+            <summary>
+            Return current time for testing application
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
