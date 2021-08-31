@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 
-namespace StoreWebAPI.Extentions.App
+namespace StoreWebAPI.Extentions.Configure
 {
-    public static class UseSwagger
+    public static class SwaggerConfig
     {
         public static void UseSwaggerExt(this IApplicationBuilder app)
         {

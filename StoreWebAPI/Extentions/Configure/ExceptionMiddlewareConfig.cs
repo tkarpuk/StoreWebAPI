@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using System.Net;
 
-namespace StoreWebAPI.Extentions.App
+namespace StoreWebAPI.Extentions.Configure
 {
-    public static class UseExceptionMiddleware
+    public static class ExceptionMiddlewareConfig
     {
         public static void UseExceptionHandlerExt(this IApplicationBuilder app, ILogger logger)
         {

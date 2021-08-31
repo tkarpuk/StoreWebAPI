@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace StoreWebAPI.Extentions.Services
 {
-    public static class AddSwagger
+    public static class SwaggerService
     {
         public static void AddSwaggerExt(this IServiceCollection services)
         {
