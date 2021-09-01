@@ -3,6 +3,9 @@ using System;
 using StoreWebAPI.Data.Repositories;
 using StoreWebAPI.Models.DB;
 using StoreWebAPI.Data;
+using MediatR;
+using StoreWebAPI.Features.StoreFeatures.Queries;
+using System.Threading.Tasks;
 
 namespace StoreWebAPI.Controllers
 {
@@ -15,21 +18,25 @@ namespace StoreWebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public string GetCurrentTime()
+        public async Task<ActionResult> GetCurrentTime()
         {
-            //var lst = repository.GetAll();
+            var lst = await mediator.Send(new GetStoresQuery());
 
-            return DateTime.Now.ToString("T");
+            return Ok(DateTime.Now.ToString("T"));
         }
         /// <summary>
         /// only for test...
         /// need to remove!
         /// </summary>
-        private readonly IRepository<Store> repository;
-        public TestController(StoreDB db)
+        //private readonly IRepository<Store> repository;
+        //public TestController(StoreDB db)
+        //{
+        //    repository = new RepositoryBase<Store>(db);
+        //}
+        private readonly IMediator mediator;
+        public TestController(IMediator mediator)
         {
-            repository = new RepositoryBase<Store>(db);
+            this.mediator = mediator;
         }
-
     }
 }

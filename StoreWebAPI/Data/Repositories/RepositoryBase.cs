@@ -16,7 +16,7 @@ namespace StoreWebAPI.Data.Repositories
             db.Set<T>().Add(item);
         }
 
-        public void Delete(int Id)
+        public void DelteById(int Id)
         {
             T item = db.Set<T>().Find(Id);
             if (item != null)

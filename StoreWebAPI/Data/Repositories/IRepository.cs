@@ -8,7 +8,7 @@ namespace StoreWebAPI.Data.Repositories
         T GetById(int Id);
         void Create(T item);
         void Update(T item);
-        void Delete(int Id);
+        void DelteById(int Id);
         void Save();
     }
 }

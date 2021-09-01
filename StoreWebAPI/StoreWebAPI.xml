@@ -10,5 +10,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="F:StoreWebAPI.Controllers.TestController.mediator">
+            <summary>
+            only for test...
+            need to remove!
+            </summary>
+        </member>
     </members>
 </doc>

@@ -23,6 +23,7 @@ namespace StoreWebAPI
             services.AddControllers();
             services.AddSwaggerExt();
             services.AddDbServiceExt(configuration.GetConnectionString("DefaultConnection"));
+            services.AddMediatRExt();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
