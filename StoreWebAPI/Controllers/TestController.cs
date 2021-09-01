@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using StoreWebAPI.Data.Repositories;
+using StoreWebAPI.Models.DB;
+using StoreWebAPI.Data;
 
 namespace StoreWebAPI.Controllers
 {
@@ -18,7 +17,18 @@ namespace StoreWebAPI.Controllers
         [HttpGet]
         public string GetCurrentTime()
         {
+            //var lst = repository.GetAll();
+
             return DateTime.Now.ToString("T");
+        }
+        /// <summary>
+        /// only for test...
+        /// need to remove!
+        /// </summary>
+        private readonly IRepository<Store> repository;
+        public TestController(StoreDB db)
+        {
+            repository = new RepositoryBase<Store>(db);
         }
 
     }
