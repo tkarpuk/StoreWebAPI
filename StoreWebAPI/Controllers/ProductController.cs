@@ -31,18 +31,7 @@ namespace StoreWebAPI.Controllers
         {           
             int pageSize = configuration.GetValue<int>("PageSettings:PageSize");
 
-            var listAll = await mediator.Send(new GetProductsQuery());
-
-            var pageItems = await Task.Run(() =>
-            {
-                var count = listAll.Count();
-                if (count < pageSize)
-                    return listAll;
-
-                return listAll.Skip((page - 1) * pageSize).Take(pageSize).ToList();
-            });
-
-            
+            var pageItems = await mediator.Send(new GetProductsQuery(page, pageSize));
             return Ok(pageItems);
         }
        

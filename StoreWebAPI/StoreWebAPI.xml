@@ -6,7 +6,7 @@
     <members>
         <member name="M:StoreWebAPI.Controllers.ProductController.GetProducts(System.Int32)">
             <summary>
-            Gel list of all products
+            Gel list of all products by page number
             default page size = 10
             </summary>
             <returns></returns>
