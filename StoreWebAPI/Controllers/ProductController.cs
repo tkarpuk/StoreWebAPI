@@ -4,7 +4,6 @@ using MediatR;
 using StoreWebAPI.Features.ProductFeatures.Queries;
 using StoreWebAPI.Models.DB;
 using StoreWebAPI.Features.ProductFeatures.Commands;
-using System.Linq;
 using Microsoft.Extensions.Configuration;
 
 namespace StoreWebAPI.Controllers
