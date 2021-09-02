@@ -4,6 +4,8 @@ using MediatR;
 using StoreWebAPI.Features.ProductFeatures.Queries;
 using StoreWebAPI.Models.DB;
 using StoreWebAPI.Features.ProductFeatures.Commands;
+using System.Linq;
+using Microsoft.Extensions.Configuration;
 
 namespace StoreWebAPI.Controllers
 {
@@ -11,29 +13,46 @@ namespace StoreWebAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        private readonly IConfiguration configuration;
         private readonly IMediator mediator;
-        public ProductController(IMediator mediator)
+        public ProductController(IConfiguration config, IMediator mediator)
         {
             this.mediator = mediator;
+            this.configuration = config;
         }
 
         /// <summary>
         /// Gel list of all products
+        /// default page size = 10
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public async Task<IActionResult> GetProducts()
+        [HttpGet("{page:int}", Name = "GetProducts")]
+        public async Task<IActionResult> GetProducts(int page = 1)
         {
-            var list = await mediator.Send(new GetProductsQuery());
-            return Ok(list);
-        }
+           
+            int pageSize = configuration.GetValue<int>("PageSettings:PageSize");
 
+            var listAll = await mediator.Send(new GetProductsQuery());
+
+            var pageItems = await Task.Run(() =>
+            {
+                var count = listAll.Count();
+                if (count < pageSize)
+                    return listAll;
+
+                return listAll.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            });
+
+            
+            return Ok(pageItems);
+        }
+       
         /// <summary>
         /// Get one product by Id (int)
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        [HttpGet("{id:int}", Name = "GetProductById")]
+        [HttpGet("Id/{id:int}", Name = "GetProductById")]
         public async Task<IActionResult> GetProductById(int Id)
         {
             var item = await mediator.Send(new GetProductByIdQuery(Id));

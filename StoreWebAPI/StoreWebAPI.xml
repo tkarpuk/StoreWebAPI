@@ -4,9 +4,10 @@
         <name>StoreWebAPI</name>
     </assembly>
     <members>
-        <member name="M:StoreWebAPI.Controllers.ProductController.GetProducts">
+        <member name="M:StoreWebAPI.Controllers.ProductController.GetProducts(System.Int32)">
             <summary>
             Gel list of all products
+            default page size = 10
             </summary>
             <returns></returns>
         </member>
