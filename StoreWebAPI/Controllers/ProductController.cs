@@ -17,6 +17,10 @@ namespace StoreWebAPI.Controllers
             this.mediator = mediator;
         }
 
+        /// <summary>
+        /// Gel list of all products
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
@@ -24,6 +28,11 @@ namespace StoreWebAPI.Controllers
             return Ok(list);
         }
 
+        /// <summary>
+        /// Get one product by Id (int)
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetProductById(int Id)
         {
@@ -31,6 +40,11 @@ namespace StoreWebAPI.Controllers
             return Ok(item);
         }
 
+        /// <summary>
+        /// Create product in DB
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddProduct(Product product)
         {
@@ -38,6 +52,11 @@ namespace StoreWebAPI.Controllers
             return StatusCode(201);
         }
 
+        /// <summary>
+        /// Delete product by Id (int)
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpDelete]
         public async Task<IActionResult> DeleteProductById(int Id)
         {
@@ -45,6 +64,11 @@ namespace StoreWebAPI.Controllers
             return StatusCode(201);
         }
 
+        /// <summary>
+        /// Update current product in DB
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [HttpPut]
         public async Task<IActionResult> UpdateStore(Product product)
         {

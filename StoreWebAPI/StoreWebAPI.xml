@@ -4,6 +4,74 @@
         <name>StoreWebAPI</name>
     </assembly>
     <members>
+        <member name="M:StoreWebAPI.Controllers.ProductController.GetProducts">
+            <summary>
+            Gel list of all products
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StoreWebAPI.Controllers.ProductController.GetProductById(System.Int32)">
+            <summary>
+            Get one product by Id (int)
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StoreWebAPI.Controllers.ProductController.AddProduct(StoreWebAPI.Models.DB.Product)">
+            <summary>
+            Create product in DB
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StoreWebAPI.Controllers.ProductController.DeleteProductById(System.Int32)">
+            <summary>
+            Delete product by Id (int)
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StoreWebAPI.Controllers.ProductController.UpdateStore(StoreWebAPI.Models.DB.Product)">
+            <summary>
+            Update current product in DB
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StoreWebAPI.Controllers.StoreController.GetStores">
+            <summary>
+            Get list of all stores
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StoreWebAPI.Controllers.StoreController.GetStoreById(System.Int32)">
+            <summary>
+            Get store by Id (int)
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StoreWebAPI.Controllers.StoreController.AddStore(StoreWebAPI.Models.DB.Store)">
+            <summary>
+            Create new store
+            </summary>
+            <param name="store"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StoreWebAPI.Controllers.StoreController.DeleteStoreById(System.Int32)">
+            <summary>
+            Delete store by Id (int)
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StoreWebAPI.Controllers.StoreController.UpdateStore(StoreWebAPI.Models.DB.Store)">
+            <summary>
+            Update current store
+            </summary>
+            <param name="store"></param>
+            <returns></returns>
+        </member>
         <member name="M:StoreWebAPI.Controllers.TestController.GetCurrentTime">
             <summary>
             Return current time for testing application
