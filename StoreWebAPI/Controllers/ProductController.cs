@@ -22,14 +22,13 @@ namespace StoreWebAPI.Controllers
         }
 
         /// <summary>
-        /// Gel list of all products
+        /// Gel list of all products by page number
         /// default page size = 10
         /// </summary>
         /// <returns></returns>
         [HttpGet("{page:int}", Name = "GetProducts")]
         public async Task<IActionResult> GetProducts(int page = 1)
-        {
-           
+        {           
             int pageSize = configuration.GetValue<int>("PageSettings:PageSize");
 
             var listAll = await mediator.Send(new GetProductsQuery());
