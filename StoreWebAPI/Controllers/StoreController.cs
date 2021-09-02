@@ -33,7 +33,7 @@ namespace StoreWebAPI.Controllers
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("{id:int}", Name = "GetStoreById")]
         public async Task<IActionResult> GetStoreById(int Id)
         {
             var item = await mediator.Send(new GetStoreByIdQuery(Id));
@@ -75,6 +75,6 @@ namespace StoreWebAPI.Controllers
             await mediator.Send(new UpdateStoreCommand(store));
             return StatusCode(201);
         }
-        */
+        
     }
 }

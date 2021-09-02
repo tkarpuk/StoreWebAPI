@@ -33,7 +33,7 @@ namespace StoreWebAPI.Controllers
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("{id:int}", Name = "GetProductById")]
         public async Task<IActionResult> GetProductById(int Id)
         {
             var item = await mediator.Send(new GetProductByIdQuery(Id));
