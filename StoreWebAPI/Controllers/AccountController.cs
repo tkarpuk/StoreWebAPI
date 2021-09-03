@@ -26,7 +26,7 @@ namespace StoreWebAPI.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("/login")]
-        public IActionResult Login(string login, string password)
+        public IActionResult Login(string login = "1", string password = "1")
         {
             var checker = new LoginChecker(login, password);
             Person person = checker.GetPerson();

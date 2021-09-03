@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace StoreWebAPI.Features.ProductFeatures.Queries
 {
-    public record GetProductsQuery(int page, int pageSize) : IRequest<IEnumerable<Product>> { }
+    public record GetProductsQuery(int storeId, int page, int pageSize) : IRequest<IEnumerable<Product>> { }
 
     public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, IEnumerable<Product>>
     {
@@ -27,7 +27,7 @@ namespace StoreWebAPI.Features.ProductFeatures.Queries
 
             var pageItems = await Task.Run(() =>
             {
-                var list = repository.GetAll();
+                var list = repository.GetAll().Where(p => (p.StoreId == request.storeId));
                 var count = list.Count();
                 if (count < pageSize)
                     return list;

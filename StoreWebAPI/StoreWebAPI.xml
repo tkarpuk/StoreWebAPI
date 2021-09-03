@@ -9,15 +9,17 @@
             Method for getting authorization token
             use "1" as Login and Password for test. 
             </summary>
-            <param name="login">1</param>
-            <param name="password">1</param>
+            <param name="login">use "1"</param>
+            <param name="password">use "1"</param>
             <returns></returns>
         </member>
-        <member name="M:StoreWebAPI.Controllers.ProductController.GetProducts(System.Int32)">
+        <member name="M:StoreWebAPI.Controllers.ProductController.GetProducts(System.Int32,System.Int32)">
             <summary>
             Gel list of all products by page number
             default page size = 10
             </summary>
+            <param name="storeId"></param>
+            <param name="page"></param>
             <returns></returns>
         </member>
         <member name="M:StoreWebAPI.Controllers.ProductController.GetProductById(System.Int32)">
