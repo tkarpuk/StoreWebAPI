@@ -2,7 +2,8 @@
 {
     public class ResponseJWT
     {
-        public string access_token { get; set; }
-        public string username { get; set; }
+        public string CopyForSwaggerTesting { get; set; }
+        public string Token { get; set; }
+        public string Username { get; set; }        
     }
 }

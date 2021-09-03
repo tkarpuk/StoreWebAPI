@@ -46,7 +46,12 @@ namespace StoreWebAPI.Auth
 
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
-            return new ResponseJWT() {access_token = encodedJwt, username = identity.Name };
+            return new ResponseJWT() 
+            {
+                Token = encodedJwt, 
+                Username = identity.Name,
+                CopyForSwaggerTesting = $"Bearer {encodedJwt}"
+            };
         }
     }
 }

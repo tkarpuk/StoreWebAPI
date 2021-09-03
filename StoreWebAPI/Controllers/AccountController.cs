@@ -21,8 +21,8 @@ namespace StoreWebAPI.Controllers
         /// Method for getting authorization token
         /// use "1" as Login and Password for test. 
         /// </summary>
-        /// <param name="login">use "1"</param>
-        /// <param name="password">use "1"</param>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("/login")]
