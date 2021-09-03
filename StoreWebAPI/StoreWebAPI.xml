@@ -18,11 +18,11 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:StoreWebAPI.Controllers.ProductController.AddProduct(StoreWebAPI.Models.DB.Product)">
+        <member name="M:StoreWebAPI.Controllers.ProductController.AddProduct(StoreWebAPI.Models.DTO.ProductDTO)">
             <summary>
             Create product in DB
             </summary>
-            <param name="product"></param>
+            <param name="productDTO"></param>
             <returns></returns>
         </member>
         <member name="M:StoreWebAPI.Controllers.ProductController.DeleteProductById(System.Int32)">
@@ -32,11 +32,11 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:StoreWebAPI.Controllers.ProductController.UpdateStore(StoreWebAPI.Models.DB.Product)">
+        <member name="M:StoreWebAPI.Controllers.ProductController.UpdateStore(StoreWebAPI.Models.DTO.ProductDTO)">
             <summary>
             Update current product in DB
             </summary>
-            <param name="product"></param>
+            <param name="productDTO"></param>
             <returns></returns>
         </member>
         <member name="M:StoreWebAPI.Controllers.StoreController.GetStores">
@@ -52,11 +52,11 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:StoreWebAPI.Controllers.StoreController.AddStore(StoreWebAPI.Models.DB.Store)">
+        <member name="M:StoreWebAPI.Controllers.StoreController.AddStore(StoreWebAPI.Models.DTO.StoreDTO)">
             <summary>
             Create new store
             </summary>
-            <param name="store"></param>
+            <param name="storeDTO"></param>
             <returns></returns>
         </member>
         <member name="M:StoreWebAPI.Controllers.StoreController.DeleteStoreById(System.Int32)">
@@ -66,11 +66,11 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:StoreWebAPI.Controllers.StoreController.UpdateStore(StoreWebAPI.Models.DB.Store)">
+        <member name="M:StoreWebAPI.Controllers.StoreController.UpdateStore(StoreWebAPI.Models.DTO.StoreDTO)">
             <summary>
             Update current store
             </summary>
-            <param name="store"></param>
+            <param name="storeDTO"></param>
             <returns></returns>
         </member>
         <member name="M:StoreWebAPI.Controllers.TestController.GetCurrentTime">

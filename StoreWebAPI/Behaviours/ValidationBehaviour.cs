@@ -1,9 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,9 +14,10 @@ namespace StoreWebAPI.Behaviours
         private readonly IEnumerable<IValidator<TRequest>> _validators;
         private readonly ILogger _logger;
 
-        public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators, ILogger logger)
+        public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators, ILogger<ValidationBehaviour<TRequest, TResponse>> logger)
         {
             _validators = validators;
+            _logger = logger;
         }
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)

@@ -20,6 +20,7 @@ namespace StoreWebAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutomapperExt();
             services.AddControllers();
             services.AddSwaggerExt();
             services.AddDbServiceExt(configuration.GetConnectionString("DefaultConnection"));
