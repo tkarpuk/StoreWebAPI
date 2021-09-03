@@ -7,9 +7,11 @@ using StoreWebAPI.Features.StoreFeatures.Commands;
 using AutoMapper;
 using System.Collections.Generic;
 using StoreWebAPI.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StoreWebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StoreController : ControllerBase

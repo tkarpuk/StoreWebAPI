@@ -20,6 +20,7 @@ namespace StoreWebAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthenticationExt();
             services.AddAutomapperExt();
             services.AddControllers();
             services.AddSwaggerExt();
@@ -38,6 +39,9 @@ namespace StoreWebAPI
             app.UseExceptionHandlerExt(logger);
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

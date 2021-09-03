@@ -4,6 +4,15 @@
         <name>StoreWebAPI</name>
     </assembly>
     <members>
+        <member name="M:StoreWebAPI.Controllers.AccountController.Login(System.String,System.String)">
+            <summary>
+            Method for getting authorization token
+            use "1" as Login and Password for test. 
+            </summary>
+            <param name="login">1</param>
+            <param name="password">1</param>
+            <returns></returns>
+        </member>
         <member name="M:StoreWebAPI.Controllers.ProductController.GetProducts(System.Int32)">
             <summary>
             Gel list of all products by page number

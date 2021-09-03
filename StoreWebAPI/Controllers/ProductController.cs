@@ -8,9 +8,11 @@ using Microsoft.Extensions.Configuration;
 using AutoMapper;
 using StoreWebAPI.Models.DTO;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StoreWebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
