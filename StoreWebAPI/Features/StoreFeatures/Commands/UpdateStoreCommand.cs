@@ -11,19 +11,19 @@ namespace StoreWebAPI.Features.StoreFeatures.Commands
 
     public class UpdateStoreCommandHandler : IRequestHandler<UpdateStoreCommand, Unit>
     {
-        private readonly IRepository<Store> repository;
+        private readonly IRepository<Store> _repository;
 
         public UpdateStoreCommandHandler(StoreDB storeDB)
         {
-            repository = new RepositoryBase<Store>(storeDB);
+            _repository = new RepositoryBase<Store>(storeDB);
         }
 
         public async Task<Unit> Handle(UpdateStoreCommand request, CancellationToken cancellationToken)
         {
             await Task.Run(() =>
             {
-                repository.Update(request.Store);
-                repository.Save();
+                _repository.Update(request.Store);
+                _repository.Save();
             },
             cancellationToken);
 

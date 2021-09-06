@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using StoreWebAPI.Models.DB;
-using StoreWebAPI.Models.DTO;
+using StoreWebAPI.Models.View;
 
 namespace StoreWebAPI.MapperProfiles
 {
@@ -8,8 +8,8 @@ namespace StoreWebAPI.MapperProfiles
     {
         public MapperProfile()
         {
-            CreateMap<ProductDTO, Product>().ReverseMap();
-            CreateMap<StoreDTO, Store>().ReverseMap();
+            CreateMap<ProductView, Product>().ReverseMap();
+            CreateMap<StoreView, Store>().ReverseMap();
         }
     }
 }

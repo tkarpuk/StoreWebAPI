@@ -11,16 +11,16 @@ namespace StoreWebAPI.Features.ProductFeatures.Queries
 
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, Product>
     {
-        private readonly IRepository<Product> repository;
+        private readonly IRepository<Product> _repository;
 
         public GetProductByIdQueryHandler(StoreDB storeDB)
         {
-            repository = new RepositoryBase<Product>(storeDB);
+            _repository = new RepositoryBase<Product>(storeDB);
         }
 
         public async Task<Product> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            return await Task.Run(() => repository.GetById(request.Id), cancellationToken);
+            return await Task.Run(() => _repository.GetById(request.Id), cancellationToken);
         }
     }
 }

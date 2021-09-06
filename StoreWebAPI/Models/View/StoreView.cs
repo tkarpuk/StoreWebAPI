@@ -1,6 +1,6 @@
-﻿namespace StoreWebAPI.Models.DTO
+﻿namespace StoreWebAPI.Models.View
 {
-    public class StoreDTO
+    public class StoreView
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -11,19 +11,19 @@ namespace StoreWebAPI.Features.ProductFeatures.Commands
 
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, Unit>
     {
-        private readonly IRepository<Product> repository;
+        private readonly IRepository<Product> _repository;
 
         public DeleteProductCommandHandler(StoreDB storeDB)
         {
-            repository = new RepositoryBase<Product>(storeDB);
+            _repository = new RepositoryBase<Product>(storeDB);
         }
 
         public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
             await Task.Run(() =>
             {
-                repository.DelteById(request.Id);
-                repository.Save();
+                _repository.DelteById(request.Id);
+                _repository.Save();
             },
             cancellationToken);
 

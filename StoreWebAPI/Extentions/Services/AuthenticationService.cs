@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using StoreWebAPI.Auth;
@@ -22,12 +18,12 @@ namespace StoreWebAPI.Extentions.Services
                             // укзывает, будет ли валидироваться издатель при валидации токена
                             ValidateIssuer = true,
                             // строка, представляющая издателя
-                            ValidIssuer = AuthOptions.ISSUER,
+                            ValidIssuer = AuthOptions.Issuer,
 
                             // будет ли валидироваться потребитель токена
                             ValidateAudience = true,
                             // установка потребителя токена
-                            ValidAudience = AuthOptions.AUDIENCE,
+                            ValidAudience = AuthOptions.Audience,
                             // будет ли валидироваться время существования
                             ValidateLifetime = true,
 

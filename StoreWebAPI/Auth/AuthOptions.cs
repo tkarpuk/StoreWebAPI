@@ -5,14 +5,14 @@ namespace StoreWebAPI.Auth
 {
     public class AuthOptions
     {
-        public const string ISSUER = "StoreWebAPI"; 
-        public const string AUDIENCE = "Client"; 
-        const string KEY = "mysupersecret_secretkey!123";   
-        public const int LIFETIME = 10; 
+        public const string Issuer = "StoreWebAPI"; 
+        public const string Audience = "Client"; 
+        public const int LifeTime = 10; 
+        const string _key = "mysupersecret_secretkey!123";   
 
         public static SymmetricSecurityKey GetSymmetricSecurityKey()
         {
-            return new SymmetricSecurityKey(Encoding.ASCII.GetBytes(KEY));
+            return new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_key));
         }
     }
 }

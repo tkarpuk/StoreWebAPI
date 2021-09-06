@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace StoreWebAPI.Models.DTO
+namespace StoreWebAPI.Models.View
 {
-    public class ProductDTO
+    public class ProductView
     {
         public int Id { get; set; }
         public string Name { get; set; }

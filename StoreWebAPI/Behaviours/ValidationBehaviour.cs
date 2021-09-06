@@ -16,8 +16,7 @@ namespace StoreWebAPI.Behaviours
 
         public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators, ILogger<ValidationBehaviour<TRequest, TResponse>> logger)
         {
-            _validators = validators;
-            _logger = logger;
+            (_validators, _logger) = (validators, logger);
         }
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)

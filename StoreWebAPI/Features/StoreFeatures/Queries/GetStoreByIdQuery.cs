@@ -11,16 +11,16 @@ namespace StoreWebAPI.Features.StoreFeatures.Queries
 
     public class GetStoreByIdQueryHandler : IRequestHandler<GetStoreByIdQuery, Store>
     {
-        private readonly IRepository<Store> repository;
+        private readonly IRepository<Store> _repository;
 
         public GetStoreByIdQueryHandler(StoreDB storeDB)
         {
-            repository = new RepositoryBase<Store>(storeDB);
+            _repository = new RepositoryBase<Store>(storeDB);
         }
 
         public async Task<Store> Handle(GetStoreByIdQuery request, CancellationToken cancellationToken)
         {
-            return await Task.Run(() => repository.GetById(request.Id), cancellationToken);
+            return await Task.Run(() => _repository.GetById(request.Id), cancellationToken);
         }
     }
 }

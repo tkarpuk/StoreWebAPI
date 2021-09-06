@@ -7,24 +7,24 @@ using StoreWebAPI.Models.DB;
 
 namespace StoreWebAPI.Features.StoreFeatures.Commands
 {
-    public record AddStoreCommand(Store store) : IRequest  { }
+    public record AddStoreCommand(Store Store) : IRequest  { }
 
     public class AddStoreCommandHandler: IRequestHandler<AddStoreCommand, Unit>
     {
-        private readonly IRepository<Store> repository;
+        private readonly IRepository<Store> _repository;
 
         public AddStoreCommandHandler(StoreDB storeDB)
         {
-            repository = new RepositoryBase<Store>(storeDB);
+            _repository = new RepositoryBase<Store>(storeDB);
         }
 
         public async Task<Unit> Handle(AddStoreCommand request, CancellationToken cancellationToken)
         {
-            await Task.Run(() =>
+            await Task.Run((System.Action)(() =>
             {
-                repository.Create(request.store);
-                repository.Save();
-            },
+                _repository.Create((Store)request.Store);
+                _repository.Save();
+            }),
             cancellationToken);
             return Unit.Value;
         }

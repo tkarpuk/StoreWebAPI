@@ -14,19 +14,19 @@ namespace StoreWebAPI.Features.ProductFeatures.Commands
 
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, Unit>
     {
-        private readonly IRepository<Product> repository;
+        private readonly IRepository<Product> _repository;
 
         public UpdateProductCommandHandler(StoreDB storeDB)
         {
-            repository = new RepositoryBase<Product>(storeDB);
+            _repository = new RepositoryBase<Product>(storeDB);
         }
 
         public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
             await Task.Run(() => 
             {
-                repository.Update(request.Product);
-                repository.Save();
+                _repository.Update(request.Product);
+                _repository.Save();
             },
             cancellationToken);
 

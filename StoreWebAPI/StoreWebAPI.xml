@@ -9,8 +9,8 @@
             Method for getting authorization token
             use "1" as Login and Password for test. 
             </summary>
-            <param name="login">use "1"</param>
-            <param name="password">use "1"</param>
+            <param name="login"></param>
+            <param name="password"></param>
             <returns></returns>
         </member>
         <member name="M:StoreWebAPI.Controllers.ProductController.GetProducts(System.Int32,System.Int32)">
@@ -29,11 +29,11 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:StoreWebAPI.Controllers.ProductController.AddProduct(StoreWebAPI.Models.DTO.ProductDTO)">
+        <member name="M:StoreWebAPI.Controllers.ProductController.AddProduct(StoreWebAPI.Models.View.ProductView)">
             <summary>
             Create product in DB
             </summary>
-            <param name="productDTO"></param>
+            <param name="productView"></param>
             <returns></returns>
         </member>
         <member name="M:StoreWebAPI.Controllers.ProductController.DeleteProductById(System.Int32)">
@@ -43,11 +43,11 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:StoreWebAPI.Controllers.ProductController.UpdateStore(StoreWebAPI.Models.DTO.ProductDTO)">
+        <member name="M:StoreWebAPI.Controllers.ProductController.UpdateStore(StoreWebAPI.Models.View.ProductView)">
             <summary>
             Update current product in DB
             </summary>
-            <param name="productDTO"></param>
+            <param name="productView"></param>
             <returns></returns>
         </member>
         <member name="M:StoreWebAPI.Controllers.StoreController.GetStores">
@@ -63,11 +63,11 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:StoreWebAPI.Controllers.StoreController.AddStore(StoreWebAPI.Models.DTO.StoreDTO)">
+        <member name="M:StoreWebAPI.Controllers.StoreController.AddStore(StoreWebAPI.Models.View.StoreView)">
             <summary>
             Create new store
             </summary>
-            <param name="storeDTO"></param>
+            <param name="storeView"></param>
             <returns></returns>
         </member>
         <member name="M:StoreWebAPI.Controllers.StoreController.DeleteStoreById(System.Int32)">
@@ -77,11 +77,11 @@
             <param name="Id"></param>
             <returns></returns>
         </member>
-        <member name="M:StoreWebAPI.Controllers.StoreController.UpdateStore(StoreWebAPI.Models.DTO.StoreDTO)">
+        <member name="M:StoreWebAPI.Controllers.StoreController.UpdateStore(StoreWebAPI.Models.View.StoreView)">
             <summary>
             Update current store
             </summary>
-            <param name="storeDTO"></param>
+            <param name="storeView"></param>
             <returns></returns>
         </member>
         <member name="M:StoreWebAPI.Controllers.TestController.GetCurrentTime">
@@ -89,12 +89,6 @@
             Return current time for testing application
             </summary>
             <returns></returns>
-        </member>
-        <member name="F:StoreWebAPI.Controllers.TestController.mediator">
-            <summary>
-            only for test...
-            need to remove!
-            </summary>
         </member>
     </members>
 </doc>

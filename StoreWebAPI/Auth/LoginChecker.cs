@@ -5,23 +5,23 @@ namespace StoreWebAPI.Auth
 {
     public class LoginChecker
     {
-        private List<Person> people = new List<Person>()
+        private readonly List<Person> _people = new List<Person>()
         {
             new Person() { Login = "1", Password = "1", Role = "admin"},
             new Person() { Login = "2", Password = "2", Role = "user"}
         };
 
-        private readonly string login;
-        private readonly string password;
+        private readonly string _login;
+        private readonly string _password;
 
         public LoginChecker(string login, string password)
         {
-            (this.login, this.password) = (login, password);
+            (_login, _password) = (login, password);
         }
 
         public Person GetPerson()
         {
-            return people.Find(p => p.Login == login && p.Password == password);
+            return _people.Find(p => (p.Login == _login) && (p.Password == _password));
         }
     }
 }

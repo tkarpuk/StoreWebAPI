@@ -6,6 +6,7 @@ using StoreWebAPI.Data;
 using MediatR;
 using StoreWebAPI.Features.StoreFeatures.Queries;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StoreWebAPI.Controllers
 {
@@ -17,26 +18,12 @@ namespace StoreWebAPI.Controllers
         /// Return current time for testing application
         /// </summary>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet]
-        public async Task<ActionResult> GetCurrentTime()
+        public ActionResult GetCurrentTime()
         {
-            var lst = await mediator.Send(new GetStoresQuery());
-
             return Ok(DateTime.Now.ToString("T"));
         }
-        /// <summary>
-        /// only for test...
-        /// need to remove!
-        /// </summary>
-        //private readonly IRepository<Store> repository;
-        //public TestController(StoreDB db)
-        //{
-        //    repository = new RepositoryBase<Store>(db);
-        //}
-        private readonly IMediator mediator;
-        public TestController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        
     }
 }

@@ -11,10 +11,10 @@ namespace StoreWebAPI.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly ILogger logger;
+        private readonly ILogger _logger;
         public AccountController(ILogger<AccountController> logger)
         {
-            this.logger = logger;
+            _logger = logger;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace StoreWebAPI.Controllers
             Person person = checker.GetPerson();
             if (person == null)
             {
-                logger.LogWarning($"Unknown user {login}.");
+                _logger.LogWarning($"Unknown user {login}.");
                 return BadRequest(new { errorText = "Invalid username or password." });
             }
 

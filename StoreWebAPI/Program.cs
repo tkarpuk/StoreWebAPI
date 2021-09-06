@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using NLog.Web;
 
-
 namespace StoreWebAPI
 {
     public class Program

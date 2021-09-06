@@ -9,19 +9,19 @@ namespace StoreWebAPI.Auth
 {
     public class PersonJWT
     {
-        private readonly Person Person;
+        private readonly Person _person;
 
         public PersonJWT(Person person)
         {
-            Person = person;
+            _person = person;
         }
 
         private ClaimsIdentity GetIdentity()
         {
             var claims = new List<Claim>
                 {
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, Person.Login),
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, Person.Role)
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, _person.Login),
+                    new Claim(ClaimsIdentity.DefaultRoleClaimType, _person.Role)
                 };
             ClaimsIdentity claimsIdentity =
             new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
@@ -36,11 +36,11 @@ namespace StoreWebAPI.Auth
 
             // создаем JWT-токен
             var jwt = new JwtSecurityToken(
-                issuer: AuthOptions.ISSUER,
-                audience: AuthOptions.AUDIENCE,
+                issuer: AuthOptions.Issuer,
+                audience: AuthOptions.Audience,
                 notBefore: now,
                 claims: identity.Claims,
-                expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
+                expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LifeTime)),
                 signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256)
             );
 

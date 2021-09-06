@@ -12,10 +12,10 @@ namespace StoreWebAPI
 {
     public class Startup
     {
-        private readonly IConfiguration configuration;
+        private readonly IConfiguration _configuration;
         public Startup(IConfiguration configuration)
         {
-            this.configuration = configuration;
+            _configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -24,7 +24,7 @@ namespace StoreWebAPI
             services.AddAutomapperExt();
             services.AddControllers();
             services.AddSwaggerExt();
-            services.AddDbServiceExt(configuration.GetConnectionString("DefaultConnection"));
+            services.AddDbServiceExt(_configuration.GetConnectionString("DefaultConnection"));
             services.AddMediatRExt();
             services.AddFluentValidationExt();
         }

@@ -25,7 +25,7 @@ namespace StoreWebAPI.Extentions.Configure
                         {
                             StatusCode = context.Response.StatusCode,
                             Message = "Internal Server Error."
-                        }.ToString());
+                        }.ToJson());
                     }
                 });
             });

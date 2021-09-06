@@ -6,7 +6,7 @@ using StoreWebAPI.Models.DB;
 using StoreWebAPI.Features.StoreFeatures.Commands;
 using AutoMapper;
 using System.Collections.Generic;
-using StoreWebAPI.Models.DTO;
+using StoreWebAPI.Models.View;
 using Microsoft.AspNetCore.Authorization;
 
 namespace StoreWebAPI.Controllers
@@ -16,12 +16,12 @@ namespace StoreWebAPI.Controllers
     [ApiController]
     public class StoreController : ControllerBase
     {
-         private readonly IMediator mediator;
-        private readonly IMapper mapper;
+         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
         public StoreController(IMediator mediator, IMapper mapper)
         {
-            (this.mediator, this.mapper) = (mediator, mapper);
+            (_mediator, _mapper) = (mediator, mapper);
         }
 
         /// <summary>
@@ -31,9 +31,9 @@ namespace StoreWebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetStores()
         {
-            var list = await mediator.Send(new GetStoresQuery());
-            var listDTO = mapper.Map<List<StoreDTO>>(list);
-            return Ok(listDTO);
+            var list = await _mediator.Send(new GetStoresQuery());
+            var listView = _mapper.Map<List<StoreView>>(list);
+            return Ok(listView);
         }
 
         /// <summary>
@@ -44,21 +44,21 @@ namespace StoreWebAPI.Controllers
         [HttpGet("{id:int}", Name = "GetStoreById")]
         public async Task<IActionResult> GetStoreById(int Id)
         {
-            var item = await mediator.Send(new GetStoreByIdQuery(Id));
-            var itemDTO = mapper.Map<StoreDTO>(item);
-            return Ok(itemDTO);
+            var item = await _mediator.Send(new GetStoreByIdQuery(Id));
+            var itemView = _mapper.Map<StoreView>(item);
+            return Ok(itemView);
         }
 
         /// <summary>
         /// Create new store
         /// </summary>
-        /// <param name="storeDTO"></param>
+        /// <param name="storeView"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> AddStore(StoreDTO storeDTO)
+        public async Task<IActionResult> AddStore(StoreView storeView)
         {
-            var store = mapper.Map<Store>(storeDTO);
-            await mediator.Send(new AddStoreCommand(store));
+            var store = _mapper.Map<Store>(storeView);
+            await _mediator.Send(new AddStoreCommand(store));
             return StatusCode(201);
         }
 
@@ -70,20 +70,20 @@ namespace StoreWebAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteStoreById(int Id)
         {
-            await mediator.Send(new DeleteStoreCommand(Id));
+            await _mediator.Send(new DeleteStoreCommand(Id));
             return StatusCode(201);
         }
 
         /// <summary>
         /// Update current store
         /// </summary>
-        /// <param name="storeDTO"></param>
+        /// <param name="storeView"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<IActionResult> UpdateStore(StoreDTO storeDTO)
+        public async Task<IActionResult> UpdateStore(StoreView storeView)
         {
-            var store = mapper.Map<Store>(storeDTO);
-            await mediator.Send(new UpdateStoreCommand(store));
+            var store = _mapper.Map<Store>(storeView);
+            await _mediator.Send(new UpdateStoreCommand(store));
             return StatusCode(201);
         }
         

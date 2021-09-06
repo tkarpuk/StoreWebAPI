@@ -6,7 +6,7 @@ using StoreWebAPI.Models.DB;
 using StoreWebAPI.Features.ProductFeatures.Commands;
 using Microsoft.Extensions.Configuration;
 using AutoMapper;
-using StoreWebAPI.Models.DTO;
+using StoreWebAPI.Models.View;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 
@@ -17,13 +17,13 @@ namespace StoreWebAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IConfiguration configuration;
-        private readonly IMediator mediator;
-        private readonly IMapper mapper;
+        private readonly IConfiguration _configuration;
+        private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
         public ProductController(IConfiguration config, IMediator mediator, IMapper mapper)
         {
-            (this.mediator, this.configuration, this.mapper) = (mediator, config, mapper);            
+            (_mediator, _configuration, _mapper) = (mediator, config, mapper);            
         }
 
         /// <summary>
@@ -36,12 +36,12 @@ namespace StoreWebAPI.Controllers
         [HttpGet("{storeId:int}/{page:int}", Name = "GetProducts")]
         public async Task<IActionResult> GetProducts(int storeId, int page = 1)
         {           
-            int pageSize = configuration.GetValue<int>("PageSettings:PageSize");
+            int pageSize = _configuration.GetValue<int>("PageSettings:PageSize");
 
-            var pageItems = await mediator.Send(new GetProductsQuery(storeId, page, pageSize));
-            var pageItemsDTO = mapper.Map<List<ProductDTO>>(pageItems);
+            var pageItems = await _mediator.Send(new GetProductsQuery(storeId, page, pageSize));
+            var pageItemsView = _mapper.Map<List<ProductView>>(pageItems);
 
-            return Ok(pageItemsDTO);
+            return Ok(pageItemsView);
         }
        
         /// <summary>
@@ -52,21 +52,21 @@ namespace StoreWebAPI.Controllers
         [HttpGet("Id/{id:int}", Name = "GetProductById")]
         public async Task<IActionResult> GetProductById(int Id)
         {
-            var item = await mediator.Send(new GetProductByIdQuery(Id));
-            var itemDTO = mapper.Map<ProductDTO>(item);
-            return Ok(itemDTO);
+            var item = await _mediator.Send(new GetProductByIdQuery(Id));
+            var itemView = _mapper.Map<ProductView>(item);
+            return Ok(itemView);
         }
 
         /// <summary>
         /// Create product in DB
         /// </summary>
-        /// <param name="productDTO"></param>
+        /// <param name="productView"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> AddProduct(ProductDTO productDTO)
+        public async Task<IActionResult> AddProduct(ProductView productView)
         {
-            var product = mapper.Map<Product>(productDTO);
-            await mediator.Send(new AddProductCommand(product));
+            var product = _mapper.Map<Product>(productView);
+            await _mediator.Send(new AddProductCommand(product));
             return StatusCode(201);
         }
 
@@ -78,20 +78,20 @@ namespace StoreWebAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteProductById(int Id)
         {
-            await mediator.Send(new DeleteProductCommand(Id));
+            await _mediator.Send(new DeleteProductCommand(Id));
             return StatusCode(201);
         }
 
         /// <summary>
         /// Update current product in DB
         /// </summary>
-        /// <param name="productDTO"></param>
+        /// <param name="productView"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<IActionResult> UpdateStore(ProductDTO productDTO)
+        public async Task<IActionResult> UpdateStore(ProductView productView)
         {
-            var product = mapper.Map<Product>(productDTO);
-            await mediator.Send(new UpdateProductCommand(product));
+            var product = _mapper.Map<Product>(productView);
+            await _mediator.Send(new UpdateProductCommand(product));
             return StatusCode(201);
         }
     }
