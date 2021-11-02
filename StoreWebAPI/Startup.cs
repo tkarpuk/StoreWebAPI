@@ -20,6 +20,16 @@ namespace StoreWebAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+   
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => 
+                options.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+            });
+
+
             services.AddAuthenticationExt();
             services.AddAutomapperExt();
             services.AddControllers();
@@ -31,14 +41,19 @@ namespace StoreWebAPI
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+
             app.UseSwaggerExt();
             app.UseExceptionHandlerExt(logger);
 
             app.UseRouting();
+
+            app.UseCors("AllowOrigin");
 
             app.UseAuthentication();
             app.UseAuthorization();
